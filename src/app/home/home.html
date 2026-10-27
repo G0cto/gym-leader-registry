@@ -1,1 +1,28 @@
-<p>home works!</p>
+<section>
+  <h1>Welcome to the Gym Leader Registry</h1>
+  <p>The official records of every Gym Leader in the Kanto, Johto, and Hoenn regions.</p>
+
+  @if (leaderService.loadError()) {
+    <p class="error" role="alert">{{ leaderService.loadError() }}</p>
+  }
+
+  <p>Total Gym Leaders registered: {{ leaderService.leaders().length }}</p>
+
+  <div class="counts">
+    <div class="count kanto">
+      <span class="number">{{ leaderService.kantoCount() }}</span>
+      <span>Kanto</span>
+    </div>
+    <div class="count johto">
+      <span class="number">{{ leaderService.johtoCount() }}</span>
+      <span>Johto</span>
+    </div>
+    <div class="count hoenn">
+      <span class="number">{{ leaderService.hoennCount() }}</span>
+      <span>Hoenn</span>
+    </div>
+  </div>
+
+  <a class="btn btn-primary" routerLink="/leaders">View all leaders</a>
+</section>
+
