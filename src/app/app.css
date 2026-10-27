@@ -1,5 +1,19 @@
-.content {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 1.5rem 1rem;
+
+:host {
+  display: block;
+  min-height: 100vh;
 }
+
+main {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 36px 0 60px;
+}
+
+@media (max-width: 600px) {
+  main {
+    width: calc(100% - 28px);
+    padding: 24px 0 40px;
+  }
+}
+
