@@ -1,1 +1,124 @@
-<p>leader-form works!</p>
+<section class="form-page">
+  <h1>{{ editingId ? 'Edit Gym Leader' : 'Register a Gym Leader' }}</h1>
+
+  @if (isLoading()) {
+    <p>Loading Gym Leader...</p>
+  } @else {
+    <form [formGroup]="leaderForm" (ngSubmit)="saveLeader()" novalidate>
+      <div class="field">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          [attr.aria-invalid]="isInvalid('name')"
+          [attr.aria-describedby]="isInvalid('name') ? 'name-error' : null"
+        />
+        @if (isInvalid('name')) {
+          <p class="error" id="name-error">
+            @if (leaderForm.controls.name.hasError('required')) {
+              Name is required.
+            } @else {
+              Name must be at least 2 characters.
+            }
+          </p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="region">Region</label>
+        <select
+          id="region"
+          formControlName="region"
+          [attr.aria-invalid]="isInvalid('region')"
+          [attr.aria-describedby]="isInvalid('region') ? 'region-error' : null"
+        >
+          <option value="">Select a region</option>
+          @for (region of regions; track region) {
+            <option [value]="region">{{ region }}</option>
+          }
+        </select>
+        @if (isInvalid('region')) {
+          <p class="error" id="region-error">Please choose a region.</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="town">Town</label>
+        <input
+          id="town"
+          type="text"
+          formControlName="town"
+          [attr.aria-invalid]="isInvalid('town')"
+          [attr.aria-describedby]="isInvalid('town') ? 'town-error' : null"
+        />
+        @if (isInvalid('town')) {
+          <p class="error" id="town-error">Town is required.</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="badge">Badge</label>
+        <input
+          id="badge"
+          type="text"
+          formControlName="badge"
+          [attr.aria-invalid]="isInvalid('badge')"
+          [attr.aria-describedby]="isInvalid('badge') ? 'badge-error' : null"
+        />
+        @if (isInvalid('badge')) {
+          <p class="error" id="badge-error">Badge is required.</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="specialty">Specialty (Pokémon type)</label>
+        <select
+          id="specialty"
+          formControlName="specialty"
+          [attr.aria-invalid]="isInvalid('specialty')"
+          [attr.aria-describedby]="isInvalid('specialty') ? 'specialty-error' : null"
+        >
+          <option value="">Select a type</option>
+          @for (type of types; track type) {
+            <option [value]="type">{{ type }}</option>
+          }
+        </select>
+        @if (isInvalid('specialty')) {
+          <p class="error" id="specialty-error">Please choose a specialty.</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="aceLevel">Ace level (1 to 100)</label>
+        <input
+          id="aceLevel"
+          type="number"
+          formControlName="aceLevel"
+          [attr.aria-invalid]="isInvalid('aceLevel')"
+          [attr.aria-describedby]="isInvalid('aceLevel') ? 'aceLevel-error' : null"
+        />
+        @if (isInvalid('aceLevel')) {
+          <p class="error" id="aceLevel-error">
+            @if (leaderForm.controls.aceLevel.hasError('required')) {
+              Ace level is required.
+            } @else {
+              Ace level must be between 1 and 100.
+            }
+          </p>
+        }
+      </div>
+
+      @if (message()) {
+        <p class="error" role="alert">{{ message() }}</p>
+      }
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary" [disabled]="leaderForm.invalid">
+          {{ editingId ? 'Save Changes' : 'Add Leader' }}
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </form>
+  }
+</section>
