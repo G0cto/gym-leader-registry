@@ -1,1 +1,18 @@
-<p>navbar works!</p>
+<nav class="navbar" aria-label="Main navigation">
+  <a routerLink="/home">Gym Leader Registry</a>
+
+  <ul>
+    <li>
+      <a routerLink="/home" routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page">Home</a>
+    </li>
+    <li>
+      <a routerLink="/leaders" routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page">Leaders</a>
+    </li>
+    <li>
+      <a routerLink="/leaders/new" routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page">Add Leader</a>
+    </li>
+  </ul>
+</nav>
