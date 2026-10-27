@@ -1,1 +1,37 @@
-<p>leader-list works!</p>
+<section>
+  <h1>Gym Leaders</h1>
+
+  <div class="filters" role="group" aria-label="Filter by region">
+    @for (region of regions; track region) {
+      <button
+        type="button"
+        class="btn filter-btn"
+        [class.active]="selectedRegion() === region"
+        [attr.aria-pressed]="selectedRegion() === region"
+        (click)="setRegion(region)"
+      >
+        {{ region }}
+      </button>
+    }
+  </div>
+
+  @if (message()) {
+    <p class="message" role="status">{{ message() }}</p>
+  }
+
+  @if (leaderService.loadError()) {
+    <p class="error" role="alert">{{ leaderService.loadError() }}</p>
+  } @else {
+    <div class="grid">
+      @for (leader of filteredLeaders(); track leader._id) {
+        <app-leader-card
+          [leader]="leader"
+          (edit)="editLeader($event)"
+          (remove)="deleteLeader($event)"
+        />
+      } @empty {
+        <p>No Gym Leaders registered yet.</p>
+      }
+    </div>
+  }
+</section>
