@@ -1,0 +1,29 @@
+
+:host {
+  display: block;
+}
+
+.not-found {
+  display: flex;
+  min-height: 55vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.not-found h1 {
+  margin-bottom: 12px;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.not-found p {
+  max-width: 440px;
+  margin-bottom: 24px;
+  line-height: 1.8;
+}
+
+.not-found .btn {
+  align-self: center;
+}
