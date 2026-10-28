@@ -23,7 +23,7 @@ mongoose
         console.log('connect to MongoDB');
         app.listen(PORT, () => console.log('Server running on http://localhost:3000'));
     })
-    .catch(() => {
+    .catch((error) => {
         console.error('MongoDB connection error: ', error.message);
         process.exit(1);
     })
