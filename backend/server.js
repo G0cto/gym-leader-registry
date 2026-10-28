@@ -9,6 +9,9 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const leaderRoutes = require('./routes/leaders');
 
+console.log('Router type:', typeof leaderRoutes);
+console.log('Router value:', leaderRoutes);
+
 const app = express();
 const PORT = 3000;
 
