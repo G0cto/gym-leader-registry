@@ -1,1 +1,28 @@
-<p>leader-card works!</p>
+
+<article class="leader-card">
+  <h2>{{ leader().name }}</h2>
+
+  <p><strong>Region:</strong> {{ leader().region }}</p>
+  <p><strong>Town:</strong> {{ leader().town }}</p>
+  <p><strong>Badge:</strong> {{ leader().badge }}</p>
+  <p><strong>Specialty:</strong> {{ leader().specialty }}</p>
+  <p><strong>Ace Level:</strong> {{ leader().aceLevel }}</p>
+
+  <div class="actions">
+    <button
+      type="button"
+      (click)="edit.emit(leader()._id!)"
+      [disabled]="!leader()._id"
+    >
+      Edit
+    </button>
+
+    <button
+      type="button"
+      (click)="remove.emit(leader()._id!)"
+      [disabled]="!leader()._id"
+    >
+      Remove
+    </button>
+  </div>
+</article>
