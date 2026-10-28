@@ -1,0 +1,65 @@
+
+:host {
+  display: block;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+section > h1 {
+  margin-bottom: 0;
+}
+
+section > p {
+  margin-bottom: 0;
+}
+
+section > h1 + p {
+  max-width: 680px;
+  margin-top: -12px;
+  font-size: 1.05rem;
+}
+
+/* Dashboard statistic cards */
+section > div:has(> div) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.stat-card,
+section > div > div {
+  padding: 22px;
+  background: linear-gradient(145deg, var(--surface), #101827);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.stat-card h2,
+section > div > div h2 {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.stat-card p,
+section > div > div p {
+  margin-bottom: 0;
+  color: var(--text);
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+section > a {
+  align-self: flex-start;
+}
+
+@media (max-width: 600px) {
+  section > div:has(> div) {
+    grid-template-columns: 1fr;
+  }
+}
