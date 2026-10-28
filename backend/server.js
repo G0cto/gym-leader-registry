@@ -10,7 +10,7 @@ const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
-app.use('app/leaders', leaderRoutes);
+app.use('api/leaders', leaderRoutes);
 
 if (!process.env.MONGODB_URI) {
     console.error('MONGODB_URI is not set in backend/.env')
